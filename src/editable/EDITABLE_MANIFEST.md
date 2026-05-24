@@ -52,3 +52,26 @@ Run before PR:
 pnpm guard:editable
 pnpm build
 ```
+
+## AI-Safe Layout V2
+
+For full visual redesigns, edit these files first:
+
+- `src/editable/sections/HomeSections.tsx`
+- `src/editable/sections/ArticleSections.tsx`
+- `src/editable/cards/PostCards.tsx`
+- `src/editable/layouts/design-contract.ts`
+- `src/editable/theme/brand.config.ts`
+- `src/editable/theme/visual-system.ts`
+- `src/editable/content/pages.content.ts`
+- `src/editable/content/task-pages.content.ts`
+
+Rules for AI edits:
+
+- Keep page files as data/composition shells.
+- Do not remove required exports from page files.
+- Do not replace dynamic `posts` props with static arrays.
+- Do not make cards narrower than `min-w-[280px]`.
+- Prefer editing sections/cards instead of touching fetch logic.
+
+- `src/editable/theme/editable-global.css` - full-site background, selection, scrollbar, and article-global visual CSS.

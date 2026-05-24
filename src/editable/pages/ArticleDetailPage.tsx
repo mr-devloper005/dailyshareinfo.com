@@ -1,20 +1,21 @@
-import { TaskDetailPage } from "@/components/tasks/task-detail-page";
-import { buildPostMetadata, buildTaskMetadata } from "@/lib/seo";
-import { fetchTaskPostBySlug } from "@/lib/task-data";
+import { buildPostMetadata, buildTaskMetadata } from '@/lib/seo'
+import { fetchTaskPostBySlug } from '@/lib/task-data'
+import { EditableArticleDetailShell } from '@/editable/sections/ArticleSections'
 
-export const revalidate = 3;
+export const revalidate = 3
 
 export async function generateStaticParams() {
-  return [];
+  return []
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
-  const resolvedParams = await params;
-  const post = await fetchTaskPostBySlug("article", resolvedParams.slug);
-  return post ? await buildPostMetadata("article", post) : await buildTaskMetadata("article");
+  const resolvedParams = await params
+  const post = await fetchTaskPostBySlug('article', resolvedParams.slug)
+  return post ? await buildPostMetadata('article', post) : await buildTaskMetadata('article')
 }
 
 export default async function ArticleDetailPage({ params }: { params: Promise<{ slug: string }> }) {
-  const resolvedParams = await params;
-  return <TaskDetailPage task="article" slug={resolvedParams.slug} />;
+  const resolvedParams = await params
+  const post = await fetchTaskPostBySlug('article', resolvedParams.slug)
+  return <EditableArticleDetailShell slug={resolvedParams.slug} post={post} />
 }
