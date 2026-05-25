@@ -1,20 +1,7 @@
 services:
   app:
     container_name: ${NEXT_PUBLIC_SITE_CODE:-slot4_site}_app
-    image: ${DEPLOY_IMAGE:-slot4-dailyshareinfo:local}
-    build:
-      context: .
-      args:
-        NEXT_PUBLIC_MASTER_PANEL_URL: ${NEXT_PUBLIC_MASTER_PANEL_URL:-}
-        NEXT_PUBLIC_MASTER_API_URL: ${NEXT_PUBLIC_MASTER_API_URL:-}
-        NEXT_PUBLIC_SITE_CODE: ${NEXT_PUBLIC_SITE_CODE:-}
-        NEXT_PUBLIC_FEED_REVALIDATE_SECONDS: ${NEXT_PUBLIC_FEED_REVALIDATE_SECONDS:-}
-        NEXT_PUBLIC_SITE_NAME: ${NEXT_PUBLIC_SITE_NAME:-}
-        NEXT_PUBLIC_SITE_TAGLINE: ${NEXT_PUBLIC_SITE_TAGLINE:-}
-        NEXT_PUBLIC_SITE_DESCRIPTION: ${NEXT_PUBLIC_SITE_DESCRIPTION:-}
-        NEXT_PUBLIC_SITE_DOMAIN: ${NEXT_PUBLIC_SITE_DOMAIN:-}
-        NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_SITE_URL:-}
-        NEXT_PUBLIC_SITE_OG_IMAGE: ${NEXT_PUBLIC_SITE_OG_IMAGE:-}
+    image: ${DEPLOY_IMAGE}
     env_file:
       - .env
     restart: unless-stopped
@@ -30,4 +17,3 @@ networks:
   default:
     name: slot4_net
     external: true
-
