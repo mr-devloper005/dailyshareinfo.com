@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { FileText, Building2, LayoutGrid, Tag, Image as ImageIcon, User, ArrowRight, Sparkles, type LucideIcon } from 'lucide-react'
+import { FileText, Building2, LayoutGrid, Tag, Image as ImageIcon, User, ArrowRight, Sparkles, Mail, type LucideIcon } from 'lucide-react'
 import { SITE_CONFIG, type TaskKey } from '@/lib/site-config'
 import { getFactoryState } from '@/design/factory/get-factory-state'
 
@@ -40,6 +40,9 @@ const footerLinks = {
 }
 
 const socialLinks: Array<{ name: string; href: string; icon: LucideIcon }> = []
+const contactEmail = 'yogeshrajwani83@gmail.com'
+const contactName = 'Yogesh Rajwani'
+
 
 export function EditableFooter() {
   const { recipe } = getFactoryState()
@@ -66,7 +69,10 @@ export function EditableFooter() {
             ))}
           </ul>
         </nav>
-        <p className="mt-8 text-white/60">&copy; {year} {SITE_CONFIG.name}</p>
+        <a href={`mailto:${contactEmail}`} className="mt-6 inline-flex items-center justify-center gap-2 text-white/80 hover:text-white hover:underline">
+          <Mail className="h-4 w-4" /> {contactName} - {contactEmail}
+        </a>
+        <p className="mt-5 text-white/60">&copy; {year} {SITE_CONFIG.name}</p>
       </footer>
     )
   }
@@ -78,6 +84,7 @@ export function EditableFooter() {
           <div>
             <p className="text-lg font-semibold">{SITE_CONFIG.name}</p>
             <p className="mt-1 text-sm text-[#56604b]">{SITE_CONFIG.description}</p>
+            <a href={`mailto:${contactEmail}`} className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-[#1f2617] hover:underline"><Mail className="h-4 w-4" /> {contactEmail}</a>
           </div>
           <div className="flex flex-wrap gap-3">
             {enabledTasks.slice(0, 5).map((task) => (
@@ -108,6 +115,7 @@ export function EditableFooter() {
                 <span className="sr-only">{SITE_CONFIG.name}</span>
               </Link>
               <p className="mt-5 max-w-md text-sm leading-7 text-slate-300">{SITE_CONFIG.description}</p>
+              <a href={`mailto:${contactEmail}`} className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-slate-200 hover:text-white hover:underline"><Mail className="h-4 w-4" /> {contactEmail}</a>
               {primaryTask ? (
                 <Link href={primaryTask.route} className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#8df0c8] px-4 py-2.5 text-sm font-semibold text-[#07111f] hover:bg-[#77dfb8]">
                   Explore {primaryTask.label}
@@ -162,6 +170,7 @@ export function EditableFooter() {
               </div>
               <h3 className="mt-5 text-3xl font-semibold tracking-[-0.04em]">{SITE_CONFIG.name}</h3>
               <p className="mt-4 max-w-md text-sm leading-7 text-[#72594a]">{SITE_CONFIG.description}</p>
+              <a href={`mailto:${contactEmail}`} className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[#2f1d16] hover:underline"><Mail className="h-4 w-4" /> {contactName} - {contactEmail}</a>
             </div>
             <div>
               <h4 className="text-xs font-semibold uppercase tracking-[0.24em] text-[#8b6d5a]">Sections</h4>
@@ -201,6 +210,7 @@ export function EditableFooter() {
               <span className="sr-only">{SITE_CONFIG.name}</span>
             </Link>
             <p className="mt-5 max-w-sm text-sm leading-7 text-slate-600">{SITE_CONFIG.description}</p>
+            <a href={`mailto:${contactEmail}`} className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-slate-950 hover:underline"><Mail className="h-4 w-4" /> {contactEmail}</a>
           </div>
           {(['platform', 'company', 'resources', 'legal'] as const).map((section) => (
             <div key={section}>

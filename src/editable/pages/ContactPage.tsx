@@ -57,6 +57,11 @@ export default function ContactPage() {
             <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[#6d6d6d]">{pagesContent.contact.eyebrow}</p>
             <h1 className="mt-4 max-w-3xl text-5xl font-semibold tracking-[-0.08em] text-[#111111] sm:text-6xl">{pagesContent.contact.title}</h1>
             <p className={`mt-5 max-w-2xl text-sm leading-8 ${tone.muted}`}>{pagesContent.contact.description}</p>
+            <div className={`mt-5 inline-flex flex-wrap items-center gap-2 rounded-full px-4 py-3 text-sm font-semibold ${tone.soft}`}>
+              <Mail className="h-4 w-4 text-[#111111]" />
+              <span className="text-[#6d6d6d]">Email:</span>
+              <a href="mailto:yogeshrajwani83@gmail.com" className="text-[#111111] underline-offset-4 hover:underline">yogeshrajwani83@gmail.com</a>
+            </div>
 
             <div className="mt-8 grid gap-4">
               {lanes.map((lane) => (
