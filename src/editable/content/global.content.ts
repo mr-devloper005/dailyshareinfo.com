@@ -3,45 +3,46 @@ import { slot4BrandConfig } from '@/editable/theme/brand.config'
 export const globalContent = {
   site: {
     name: slot4BrandConfig.siteName,
-    tagline: slot4BrandConfig.tagline || 'Independent reading platform',
+    tagline: slot4BrandConfig.tagline || 'A place for thoughtful reading',
     domain: slot4BrandConfig.domain,
     baseUrl: slot4BrandConfig.baseUrl,
   },
   nav: {
-    tagline: 'Independent reading platform',
+    tagline: 'Read the latest, save the best, keep moving.',
     primaryLinks: [
-      { label: 'Articles', href: '/articles' },
-      { label: 'Visuals', href: '/image-sharing' },
-      { label: 'Listings', href: '/listings' },
+      { label: 'Latest', href: '/article' },
+      { label: 'About', href: '/about' },
+      { label: 'Comments', href: '/comments' },
       { label: 'Contact', href: '/contact' },
     ],
     actions: {
-      primary: { label: 'Start exploring', href: '/' },
-      secondary: { label: 'Submit', href: '/contact' },
+      primary: { label: 'Browse stories', href: '/article' },
+      secondary: { label: 'Send a note', href: '/contact' },
     },
   },
   footer: {
-    tagline: 'Stories, resources, and discoverable posts',
-    description: 'A connected publishing surface for articles, visuals, listings, profiles, bookmarks, and downloadable resources.',
+    tagline: 'Simple, calm, and built around reading well.',
+    description: 'Fresh articles, clear discovery, and a smooth way to move between stories without losing your place.',
     columns: [
       {
         title: 'Explore',
         links: [
-          { label: 'Articles', href: '/articles' },
-          { label: 'Listings', href: '/listings' },
-          { label: 'Images', href: '/image-sharing' },
-          { label: 'PDF Library', href: '/pdf' },
-        ],
-      },
-      {
-        title: 'Site',
-        links: [
+          { label: 'Latest', href: '/article' },
           { label: 'About', href: '/about' },
+          { label: 'Comments', href: '/comments' },
           { label: 'Contact', href: '/contact' },
         ],
       },
+      {
+        title: 'More',
+        links: [
+          { label: 'Privacy', href: '/privacy' },
+          { label: 'Terms', href: '/terms' },
+          { label: 'Home', href: '/' },
+        ],
+      },
     ],
-    bottomNote: 'Built for clean discovery and connected publishing.',
+    bottomNote: 'Designed for long-form reading, clean browsing, and a quieter rhythm.',
   },
   commonLabels: {
     readMore: 'Read more',
