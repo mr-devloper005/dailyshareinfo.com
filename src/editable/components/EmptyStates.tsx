@@ -11,29 +11,20 @@ type EmptyStateProps = {
 }
 
 export function EmptyState({
-  title = 'Nothing here yet',
-  description = 'New reads will appear automatically once this area has content.',
+  title = 'Nothing published here yet',
+  description = 'Fresh posts will appear here automatically once this section has published content.',
   actionLabel = 'Back to home',
   actionHref = '/',
   className,
 }: EmptyStateProps) {
   return (
-    <section
-      className={cn(
-        'relative overflow-hidden rounded-[2rem] border border-black/10 bg-white p-8 text-center shadow-[0_18px_50px_rgba(17,17,17,0.05)] sm:p-10',
-        className,
-      )}
-    >
-      <div className="pointer-events-none absolute inset-0 opacity-80 [background-image:linear-gradient(to_bottom,rgba(17,17,17,0.02),transparent_55%)]" />
-      <div className="relative mx-auto flex h-14 w-14 items-center justify-center rounded-full border border-black/10 bg-[#fafaf8]">
-        <SearchX className="h-6 w-6 text-[#111111]" />
+    <section className={cn('rounded-[2rem] border border-current/10 bg-current/[0.03] p-8 text-center', className)}>
+      <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-current/10">
+        <SearchX className="h-6 w-6" />
       </div>
-      <h2 className="relative mt-5 text-2xl font-semibold tracking-[-0.05em] text-[#111111] sm:text-3xl">{title}</h2>
-      <p className="relative mx-auto mt-3 max-w-xl text-sm leading-7 text-[#666666] sm:text-base">{description}</p>
-      <Link
-        href={actionHref}
-        className="relative mt-7 inline-flex items-center gap-2 rounded-full bg-black px-5 py-3 text-sm font-medium text-white transition hover:-translate-y-0.5 hover:bg-black/90"
-      >
+      <h2 className="mt-5 text-2xl font-semibold tracking-[-0.03em]">{title}</h2>
+      <p className="mx-auto mt-3 max-w-xl text-sm leading-7 text-current/65">{description}</p>
+      <Link href={actionHref} className="mt-6 inline-flex items-center gap-2 rounded-full border border-current/15 px-5 py-3 text-sm font-semibold transition hover:bg-current hover:text-background">
         {actionLabel}
         <ArrowRight className="h-4 w-4" />
       </Link>
@@ -46,7 +37,7 @@ export function TaskEmptyState({ taskLabel = 'posts', className }: { taskLabel?:
     <EmptyState
       className={className}
       title={`No ${taskLabel} available yet`}
-      description={`Once new ${taskLabel} are published, they will appear here automatically.`}
+      description={`Published ${taskLabel} from the master panel will appear here automatically. The page layout stays ready even when the feed is empty.`}
       actionLabel="Explore the site"
       actionHref="/"
     />
@@ -58,7 +49,7 @@ export function ContactSuccessState({ className }: { className?: string }) {
     <EmptyState
       className={className}
       title="Message received"
-      description="Your note has been saved. Someone will follow up through the contact workflow."
+      description="Thanks for reaching out. Your request has been saved and routed through the contact workflow."
       actionLabel="Return home"
       actionHref="/"
     />
