@@ -15,6 +15,13 @@ body {
   background-color: var(--slot4-page-bg) !important;
   color: var(--slot4-page-text) !important;
   background-image: var(--slot4-body-gradient) !important;
+  background-attachment: fixed;
+}
+
+input,
+textarea,
+select {
+  color: var(--slot4-page-text);
 }
 
 ::selection {
@@ -37,8 +44,29 @@ body {
 
 .article-content h2 {
   color: var(--slot4-accent);
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  font-size: 1.65rem;
+  line-height: 1.1;
+  font-weight: 800;
 }
 
 .article-content a {
   color: var(--slot4-accent-fill);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.article-content p {
+  margin-bottom: 1.15rem;
+}
+
+.article-content ul,
+.article-content ol {
+  margin: 1rem 0 1.25rem;
+  padding-left: 1.4rem;
+}
+
+.article-content li + li {
+  margin-top: 0.35rem;
 }
