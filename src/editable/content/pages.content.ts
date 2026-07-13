@@ -3,23 +3,23 @@ import { slot4BrandConfig } from '@/editable/theme/brand.config'
 export const pagesContent = {
   home: {
     metadata: {
-      title: 'Article publishing with a cleaner reading experience',
-      description: 'Explore featured articles, editorial highlights, and related posts through a modern magazine-style layout.',
-      openGraphTitle: 'Article publishing with a cleaner reading experience',
-      openGraphDescription: 'Discover article-led stories, clean navigation, and richer editorial pages through a modern magazine layout.',
-      keywords: ['article site', 'editorial layout', 'magazine homepage', 'content discovery'],
+      title: 'Daily market stories, share insights, and practical explainers',
+      description: 'Follow clear market stories, company updates, sector themes, and practical investing explainers in one focused daily reading experience.',
+      openGraphTitle: 'Daily market stories and share insights',
+      openGraphDescription: 'Read focused company updates, market context, sector themes, and practical explainers without the noise.',
+      keywords: ['share market news', 'market insights', 'company updates', 'investing explainers'],
     },
     hero: {
-      badge: 'Magazine home',
-      title: ['Read sharper stories', 'without the clutter.'],
-      description: 'Explore article-led stories, useful explainers, and editorial collections in a compact magazine layout built for comfortable reading.',
+      badge: 'Today’s market briefing',
+      title: ['Understand the market', 'without the noise.'],
+      description: 'Catch up on company moves, sector signals, market themes, and useful explainers in a compact daily reading experience.',
       primaryCta: { label: 'Read latest articles', href: '/article' },
       secondaryCta: { label: 'Search archive', href: '/search' },
       searchPlaceholder: 'Search articles, topics, authors, or tags',
       focusLabel: 'Featured reading',
       featureCardBadge: "editor's pick",
       featureCardTitle: 'Strong visuals, clear story hierarchy, and article-first browsing.',
-      featureCardDescription: 'Each section keeps reading focused while making room for discovery, context, and movement between stories.',
+      featureCardDescription: 'Every section brings the key development, its context, and the next useful story into one focused reading flow.',
     },
     intro: {
       badge: 'About the publication',
@@ -41,8 +41,8 @@ export const pagesContent = {
     },
     cta: {
       badge: 'Start exploring',
-      title: 'Find your next useful article in a few calm clicks.',
-      description: 'Move between featured stories, article pages, search results, and account actions through one cleaner editorial system.',
+      title: 'Build a clearer view of the market, one story at a time.',
+      description: 'Move from today’s leading themes to company updates, practical explainers, and related analysis through one consistent editorial system.',
       primaryCta: { label: 'Browse Articles', href: '/article' },
       secondaryCta: { label: 'Contact us', href: '/contact' },
     },
@@ -78,9 +78,9 @@ export const pagesContent = {
   },
   contact: {
     eyebrow: `Contact ${slot4BrandConfig.siteName}`,
-    title: 'Send article pitches, corrections, and publishing questions.',
-    description: 'Share a story idea, a correction, a partnership note, or a request for help with the article workflow. The contact page is tuned for editorial conversations.',
-    formTitle: 'Send your message',
+    title: 'Share a market lead, correction, or partnership idea.',
+    description: 'Tell us about a company update, data correction, expert perspective, or relevant partnership. Add enough context for the editorial team to review it quickly.',
+    formTitle: 'Write to the editorial desk',
   },
 
   search: {
