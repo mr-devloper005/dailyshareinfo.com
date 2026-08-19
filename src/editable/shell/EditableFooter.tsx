@@ -2,60 +2,102 @@
 
 import Link from 'next/link'
 import type { CSSProperties } from 'react'
-import { ArrowUpRight } from 'lucide-react'
+import { ArrowUpRight, Mail } from 'lucide-react'
 import { SITE_CONFIG } from '@/lib/site-config'
 import { globalContent } from '@/editable/content/global.content'
 import { useEditableLocalAuthSession } from '@/editable/components/EditableLocalAuthForms'
 
 export function EditableFooter() {
-  const footerVars = { '--editable-footer-bg': '#101010', '--editable-footer-text': '#f8f3ea' } as CSSProperties
+  const footerVars = {
+    '--editable-footer-bg': '#1a1a1a',
+    '--editable-footer-text': '#e8e8e8',
+    '--editable-footer-muted': '#999999',
+    '--editable-footer-accent': '#c0392b',
+    '--editable-footer-border': 'rgba(255,255,255,0.08)',
+    '--editable-footer-link-hover': '#ffffff',
+  } as CSSProperties
   const taskLinks = SITE_CONFIG.tasks.filter((task) => task.enabled)
   const year = new Date().getFullYear()
   const { session, logout } = useEditableLocalAuthSession()
 
   return (
-    <footer style={footerVars} className="border-t border-white/10 bg-[var(--editable-footer-bg)] text-[var(--editable-footer-text)]">
-      <div className="mx-auto grid max-w-[var(--editable-container)] gap-10 px-4 py-14 sm:px-6 lg:grid-cols-[1.15fr_1fr_1fr] lg:px-8">
-        <div>
-          <Link href="/" className="inline-flex items-center gap-3">
-            <span className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-white">
-              <img src="/favicon.png?v=20260413" alt={globalContent.site.name} className="h-9 w-9 object-contain" />
-            </span>
-            <span>
-              <span className="block text-lg font-black tracking-[-0.04em]">{globalContent.site.name}</span>
-              <span className="block text-[11px] font-black uppercase tracking-[0.2em] text-white/45">{globalContent.footer.tagline}</span>
-            </span>
-          </Link>
-          <p className="mt-4 max-w-md text-sm leading-7 text-white/62">{globalContent.footer?.description || SITE_CONFIG.description}</p>
-        </div>
+    <footer style={footerVars} className="bg-[var(--editable-footer-bg)] text-[var(--editable-footer-text)]">
+      <div className="h-[3px] bg-[var(--editable-footer-accent)]" />
 
-        <div>
-          <h3 className="text-xs font-black uppercase tracking-[0.22em] text-white/45">Explore</h3>
-          <div className="mt-4 grid gap-2">
-            {taskLinks.map((task) => (
-              <Link key={task.key} href={task.route} className="inline-flex items-center gap-2 text-sm font-bold text-white/70 hover:text-white">
-                {task.label} <ArrowUpRight className="h-3.5 w-3.5" />
-              </Link>
-            ))}
+      <div className="mx-auto max-w-[var(--editable-container)] px-4 pt-16 pb-10 sm:px-6 lg:px-8">
+        <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
+          <div>
+            <Link href="/" className="inline-flex items-center gap-3">
+              <img src="/favicon.png?v=20260413" alt={globalContent.site.name} className="h-10 w-10 object-contain" />
+              <span className="text-lg font-extrabold tracking-tight text-white">{globalContent.site.name}</span>
+            </Link>
+            <p className="mt-5 max-w-xs text-sm leading-relaxed text-[var(--editable-footer-muted)]">
+              {globalContent.footer?.description || SITE_CONFIG.description}
+            </p>
+            <div className="mt-6 flex items-center gap-2 text-[13px] text-[var(--editable-footer-muted)]">
+              <Mail className="h-4 w-4" />
+              <Link href="/contact" className="transition hover:text-[var(--editable-footer-link-hover)]">Get in touch</Link>
+            </div>
           </div>
-        </div>
 
-        <div>
-          <h3 className="text-xs font-black uppercase tracking-[0.22em] text-white/45">Site</h3>
-          <div className="mt-4 grid gap-2">
-            {[
-              ['About', '/about'],
-              ['Contact', '/contact'],
-              ...(session ? [['Create article', '/create']] : [['Login', '/login'], ['Sign up', '/signup']]),
-            ].map(([label, href]) => (
-              <Link key={href} href={href} className="text-sm font-bold text-white/70 hover:text-white">{label}</Link>
-            ))}
-            {session ? <button type="button" onClick={logout} className="text-left text-sm font-bold text-white/70 hover:text-white">Logout ({session.name})</button> : null}
+          <div>
+            <h3 className="text-[11px] font-bold uppercase tracking-[0.16em] text-[var(--editable-footer-muted)]">Explore</h3>
+            <ul className="mt-5 grid gap-3">
+              {taskLinks.map((task) => (
+                <li key={task.key}>
+                  <Link href={task.route} className="group inline-flex items-center gap-1.5 text-sm font-medium text-[var(--editable-footer-text)] transition hover:text-[var(--editable-footer-link-hover)]">
+                    {task.label}
+                    <ArrowUpRight className="h-3 w-3 text-[var(--editable-footer-muted)] transition group-hover:text-[var(--editable-footer-link-hover)]" />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-[11px] font-bold uppercase tracking-[0.16em] text-[var(--editable-footer-muted)]">Company</h3>
+            <ul className="mt-5 grid gap-3">
+              {[
+                ['About', '/about'],
+                ['Contact', '/contact'],
+              ].map(([label, href]) => (
+                <li key={href}>
+                  <Link href={href} className="text-sm font-medium text-[var(--editable-footer-text)] transition hover:text-[var(--editable-footer-link-hover)]">{label}</Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-[11px] font-bold uppercase tracking-[0.16em] text-[var(--editable-footer-muted)]">Account</h3>
+            <ul className="mt-5 grid gap-3">
+              {session ? (
+                <>
+                  <li><Link href="/create" className="text-sm font-medium text-[var(--editable-footer-text)] transition hover:text-[var(--editable-footer-link-hover)]">Create article</Link></li>
+                  <li><button type="button" onClick={logout} className="text-left text-sm font-medium text-[var(--editable-footer-text)] transition hover:text-[var(--editable-footer-link-hover)]">Logout ({session.name})</button></li>
+                </>
+              ) : (
+                <>
+                  <li><Link href="/login" className="text-sm font-medium text-[var(--editable-footer-text)] transition hover:text-[var(--editable-footer-link-hover)]">Login</Link></li>
+                  <li><Link href="/signup" className="text-sm font-medium text-[var(--editable-footer-text)] transition hover:text-[var(--editable-footer-link-hover)]">Sign up</Link></li>
+                </>
+              )}
+            </ul>
           </div>
         </div>
       </div>
-      <div className="border-t border-white/10 px-4 py-5 text-center text-xs font-bold text-white/45">
-        Copyright {year} {globalContent.site.name}. All rights reserved.
+
+      <div className="border-t border-[var(--editable-footer-border)]">
+        <div className="mx-auto flex max-w-[var(--editable-container)] flex-col items-center justify-between gap-3 px-4 py-5 sm:flex-row sm:px-6 lg:px-8">
+          <span className="text-xs font-medium text-[var(--editable-footer-muted)]">
+            &copy; {year} {globalContent.site.name}. All rights reserved.
+          </span>
+          <div className="flex items-center gap-4 text-xs font-medium text-[var(--editable-footer-muted)]">
+            <Link href="/about" className="transition hover:text-[var(--editable-footer-link-hover)]">About</Link>
+            <span className="text-[var(--editable-footer-border)]">|</span>
+            <Link href="/contact" className="transition hover:text-[var(--editable-footer-link-hover)]">Contact</Link>
+          </div>
+        </div>
       </div>
     </footer>
   )
